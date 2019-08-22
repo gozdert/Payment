@@ -1,0 +1,40 @@
+body {
+  color: white;
+  background-color: rgba(48, 44, 44, 0.925);
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.btn {
+  margin-top: 1em !important;
+  margin-bottom: 1em !important;
+  color: #d3780f !important;
+  font-size: 20px;
+  min-height: 50px;
+	min-width: 55px;
+}
+
+.btn:hover {
+  color: white !important;
+  background-color: #d3780f !important;
+}
+
+.login_n {
+  align-content: center !important;
+  background-color: rgba(48, 44, 44, 0.925) !important;
+}
+
+.jotform_oauth_frame_mask {
+  margin-top: 200px;
+  align-content: center !important;
+  background-color: rgba(48, 44, 44, 0.925) !important;
+}
