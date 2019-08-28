@@ -15,12 +15,13 @@ code {
 }
 
 .btn {
-  margin-top: 1em !important;
-  margin-bottom: 1em !important;
+
+  margin:1em 0.25em 1em 0.25em !important;
   color: #d3780f !important;
   font-size: 20px;
   min-height: 50px;
-	min-width: 55px;
+  min-width: 55px;
+  
 }
 
 .btn:hover {

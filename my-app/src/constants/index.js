@@ -170,3 +170,9 @@ export const data = [
         value: 'Paymentwall'
     }
   ];
+
+export const global_variables = {
+    selected: [],
+    id:[],
+    dum:[]
+}
