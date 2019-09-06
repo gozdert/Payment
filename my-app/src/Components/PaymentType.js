@@ -5,7 +5,7 @@ import GenerateForm from './GenerateForm';
 import {data} from '../constants';
 //import {global_variables} from '../constants'
 import DeleteForm from './DeleteForm';
-
+//import {removeChip} from '../Multiselect'
  class PaymentType extends Component {
      constructor(props){
          super(props);
@@ -13,38 +13,25 @@ import DeleteForm from './DeleteForm';
             selectedPayment: [],
             paymentList: data,
             isFormGenerated: false,
-            isCanceled:false
+            isCanceled:false,
+            deleteflag:false
         }
         this.result = this.result.bind(this);
+        this.delete = this.delete.bind(this);
      }
-    result(params) {
-        this.setState({
-            selectedPayment : params
-        })
-      }
-    handleClick= () =>  {
-    //this.setState({isFormGenerated: true});
-    // this.setState( {
-    //     isFormGenerated: !this.state.isFormGenerated
-    //   })
-    this.setState((state) => {
-        return { isFormGenerated: !state.isFormGenerated}
-    })
-    }
-    cancelClick=()=>{
-    this.setState( {
-        isCanceled: !this.state.isCanceled
-      })   
-    }
+    result(params) { this.setState({ selectedPayment : params } ) }
+    handleClick= () => { this.setState((state) => { return { isFormGenerated: !state.isFormGenerated} } ) }
+    delete=(params)=>{ this.setState( { deleteflag:params } ) }
+    cancelClick=()=>{ this.setState( { isCanceled: !this.state.isCanceled } ) }
     render() {
         return (
             <div>
                 <h2>Choose Payment Types</h2>
-                <Multiselect options={data} onSelectOptions={this.result} />
+                <Multiselect options={data} generate={this.state.deleteflag} turn={this.delete} turn2={this.cancelClick} cancel={this.state.isCanceled} onSelectOptions={this.result} />
                 <button type="button" onClick={this.handleClick} className="btn btn-outline-warning">Generate</button>
-                <button type="button" onClick={this.cancelClick} className="btn btn-outline-warning"><i className="fas fa-eraser"></i> Cancel</button>
-                {<GenerateForm display={this.state.isFormGenerated} turn={this.handleClick} apiKey={this.props.apiKey} selected={this.state.selectedPayment} list={this.state.paymentList}/>}
-                {this.state.isCanceled ? <DeleteForm turn={this.cancelClick}/>:null}
+                <button type="button" onClick={this.cancelClick} className="btn btn-outline-warning"><i className="fas fa-eraser"></i> Delete Form</button>
+                {this.state.isFormGenerated ? <GenerateForm display={this.state.isFormGenerated} deletelist={this.delete} turn={this.handleClick} apiKey={this.props.apiKey} selectedlist={this.state.selectedPayment} list={this.state.paymentList}/>:null}
+                {this.state.isCanceled ? <DeleteForm turn={this.cancelClick} display={this.state.isCanceled}/>:null}
             </div>
         )
     }

@@ -5,7 +5,6 @@ import PaymentType from './Components/PaymentType';
 import LoginPage from './Components/LoginPage';
 
 class App extends Component {
- 
  constructor(props){
     super(props);
     this.state = { isLogin: true, apiKey:null };

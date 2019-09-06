@@ -5,19 +5,42 @@ import './App.css';
 export class Multiselect extends Component {
     constructor(props) {
         super(props);
-        this.state ={
-            checked: [],
-            dropDownValue: []
-          }
-          this.checkBox = this.checkBox.bind(this);
+        this.state ={ checked: [], dropDownValue: [], ready:false,  }
+        this.checkBox = this.checkBox.bind(this);
     }
     componentWillMount() {
-        this.setState({
-            dropDownValue: this.props.options
-        });
+        this.setState({ dropDownValue: this.props.options });
     }
-    removeChip(value) {
+    removeChip =(value) =>{
         this.checkBox(value, false);
+    }
+    removeChipAll =(resultlist) =>{
+        console.log("if öncesi",this.props.generate);
+        
+        if(this.props.generate)
+        {
+            console.log("---------- ilk if içi --------");
+            // resultlist.map(value=>{ this.checkBox(value,false);
+            // console.log(value,"deleted");
+            // });   
+            console.log(resultlist);
+            // for(let a=0;a<resultlist.length;a++)
+            // {   console.log(resultlist[a],"silindi");
+            //     this.checkBox(resultlist[a],false);
+            // }
+            this.setState({
+                checked: []
+            }, () => {
+                this.props.onSelectOptions(this.state.checked); 
+            });
+             
+            this.setState({ready:true});
+            if(this.state.ready ){
+                console.log("---------- ikinci if içi ---------");
+                this.props.turn(false);
+            }
+        }
+
     }
     checkBox(value, condition) {
         let checkedValue = this.state.checked;
@@ -52,6 +75,7 @@ export class Multiselect extends Component {
             </div>
         ) : []
         return chip;
+        
     }
     returnList() {
         const list = this.state.dropDownValue ? this.state.dropDownValue.map((data, index) =>
@@ -64,11 +88,13 @@ export class Multiselect extends Component {
     }
     
     render() {
+       // {this.state.ready ? this.props.turn(): null}
+       // console.log(this.props.turn());
         return (
             <div className="multiSelect">
                 <div className="chip">
                     {this.returnChip()}
-
+                    {this.removeChipAll(this.state.checked)} 
                 </div>
                 <input type="text" name="Search" placeholder="Search Data" className="input-box" onChange={e => this.searchFun(e)}/>
                 <div className="search-result">
@@ -86,7 +112,7 @@ Multiselect.defaultProps = {
 }
 Multiselect.prototypes = {
     options: PropTypes.array.isRequired,
-    onSelectOptions: PropTypes.func
+    onSelectOptions: PropTypes.func,
+    turn:PropTypes.func
 }
-
 export default Multiselect;
