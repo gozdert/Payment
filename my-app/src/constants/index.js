@@ -3,8 +3,8 @@ export const data = [
     name: 'PayU Turkey',
     paymentDataType: 'control_payu',
     value: 'PayU Turkey'
-  },
-  {
+    },
+    {
       name: 'Square',
       paymentDataType: 'control_square',
       value: 'Square'
@@ -169,7 +169,7 @@ export const data = [
         paymentDataType: 'control_paymentwall',
         value: 'Paymentwall'
     }
-  ];
+];
 export const global_variables = {
     selected: [],
     id:[],

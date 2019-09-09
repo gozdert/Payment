@@ -19,7 +19,6 @@ class DeleteForm extends Component {
         global_variables.dum=[];
         global_variables.selected=[];
         global_variables.id=[];
-
     }
     componentDidMount() {
         const {turn}=this.props;

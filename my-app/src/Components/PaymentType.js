@@ -3,9 +3,7 @@ import '../App.css';
 import Multiselect from '../Multiselect.js';
 import GenerateForm from './GenerateForm';
 import {data} from '../constants';
-//import {global_variables} from '../constants'
 import DeleteForm from './DeleteForm';
-//import {removeChip} from '../Multiselect'
  class PaymentType extends Component {
      constructor(props){
          super(props);

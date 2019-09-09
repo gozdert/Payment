@@ -15,32 +15,15 @@ export class Multiselect extends Component {
         this.checkBox(value, false);
     }
     removeChipAll =(resultlist) =>{
-        console.log("if öncesi",this.props.generate);
-        
-        if(this.props.generate)
-        {
+        if(this.props.generate){
             console.log("---------- ilk if içi --------");
-            // resultlist.map(value=>{ this.checkBox(value,false);
-            // console.log(value,"deleted");
-            // });   
-            console.log(resultlist);
-            // for(let a=0;a<resultlist.length;a++)
-            // {   console.log(resultlist[a],"silindi");
-            //     this.checkBox(resultlist[a],false);
-            // }
-            this.setState({
-                checked: []
-            }, () => {
-                this.props.onSelectOptions(this.state.checked); 
-            });
-             
+            this.setState({ checked: [] }, () => { this.props.onSelectOptions(this.state.checked); });
             this.setState({ready:true});
             if(this.state.ready ){
                 console.log("---------- ikinci if içi ---------");
                 this.props.turn(false);
             }
         }
-
     }
     checkBox(value, condition) {
         let checkedValue = this.state.checked;
@@ -50,11 +33,7 @@ export class Multiselect extends Component {
             let index = checkedValue.indexOf(value);
             checkedValue.splice(index, 1);
         }
-        this.setState({
-            checked: checkedValue
-        }, () => {
-            this.props.onSelectOptions(this.state.checked); 
-        });
+        this.setState({ checked: checkedValue }, () => { this.props.onSelectOptions(this.state.checked); });
     }
     searchFun(e) {
         if(e.target.value.length !== 0) {
@@ -75,7 +54,6 @@ export class Multiselect extends Component {
             </div>
         ) : []
         return chip;
-        
     }
     returnList() {
         const list = this.state.dropDownValue ? this.state.dropDownValue.map((data, index) =>
@@ -86,10 +64,7 @@ export class Multiselect extends Component {
         ) : null;
         return list;
     }
-    
     render() {
-       // {this.state.ready ? this.props.turn(): null}
-       // console.log(this.props.turn());
         return (
             <div className="multiSelect">
                 <div className="chip">
